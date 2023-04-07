@@ -1,0 +1,30 @@
+{
+  "name": "insomnia-plugin-vault",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "watch": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "insomnia": {
+    "name": "vault",
+    "displayName": "vault Plugin",
+    "description": "The vault Plugin use and encrypted file to get sensitive informations",
+    "publisher": {
+      "name": "Grogdunn"
+    },
+    "unlisted": true
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11"
+  },
+  "dependencies": {
+    "ansible-vault": "^1.1.0",
+    "yaml": "^2.2.1"
+  }
+}
