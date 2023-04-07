@@ -18,6 +18,12 @@ function extract(path: Array<string>, obj: any): unknown {
     throw "Illegal obj type."
 }
 
+function resolveHome(filepath: string) {
+    if (filepath[0] === '~') {
+        return path.join(process.env.HOME!, filepath.slice(1));
+    }
+    return filepath;
+}
 module.exports.templateTags = [{
     name: 'vault',
     displayName: 'vault',
@@ -26,12 +32,16 @@ module.exports.templateTags = [{
         {
             displayName: 'password file',
             description: 'value password file path',
-            type: 'file'
+            type: 'string',
+            defaultValue: '~/.vault/',
+            placeholder: '~/.vault/VAULT_PWD_FILE'
         },
         {
             displayName: 'encrypted file',
             description: 'value encrypted file path',
-            type: 'file'
+            type: 'string',
+            defaultValue: '~',
+            placeholder: '~/projects/PATH_TO_VAULT_FILE'
         },
         {
             displayName: 'property path',
@@ -42,8 +52,8 @@ module.exports.templateTags = [{
         }
     ],
     async run(_context: any, pwdPath: string, filePath: string, property: string) {
-        let pwd = fs.readFileSync(pwdPath, 'utf-8').trim();
-        let vaultcontent = fs.readFileSync(filePath, 'utf-8').trim();
+        let pwd = fs.readFileSync(resolveHome(pwdPath), 'utf-8').trim();
+        let vaultcontent = fs.readFileSync(resolveHome(filePath), 'utf-8').trim();
         let v = new vault.Vault({ password: pwd })
         let decrypted = v.decryptSync(vaultcontent, undefined)!;
         let obj = null;
