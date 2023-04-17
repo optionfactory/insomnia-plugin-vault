@@ -12,11 +12,14 @@
   "author": "",
   "license": "ISC",
   "insomnia": {
-    "name": "vault",
-    "displayName": "vault Plugin",
-    "description": "The vault Plugin use and encrypted file to get sensitive informations",
+    "name": "Vault Plugin",
+    "displayName": "Vault Plugin",
+    "description": "Use Ansible Vault encrypted file to store sensitive information.",
     "publisher": {
       "name": "Grogdunn"
+    },
+    "images": {
+      "icon": "logo.svg"
     },
     "unlisted": true
   },
