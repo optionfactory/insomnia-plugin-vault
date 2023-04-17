@@ -9,14 +9,18 @@
     "watch": "tsc --watch"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "OptionFactory",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/optionfactory/insomnia-plugin-vault/tree/master"
+  },
   "insomnia": {
     "name": "Vault Plugin",
     "displayName": "Vault Plugin",
     "description": "Use Ansible Vault encrypted file to store sensitive information.",
     "publisher": {
-      "name": "Grogdunn"
+      "name": "OptionFactory"
     },
     "images": {
       "icon": "logo.svg"
